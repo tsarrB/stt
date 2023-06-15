@@ -2,6 +2,7 @@ import { DomainService } from './../domains/domains.service';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Connection, Repository } from 'typeorm';
+import { NodeSSH } from 'node-ssh';
 import { GTMContainerEntity } from './gtm-containers.entity';
 import { CreateGTMContainerDto } from './gtm-containers.dto';
 import { PostgresErrorCode } from 'src/database/constraints/errors.constraint';
@@ -11,6 +12,8 @@ import { ServerEntity } from 'src/servers/server.entity';
 import { DomainEntity } from 'src/domains/domains.entity';
 import { rootDomain } from 'src/constants';
 // import { ServerService } from 'src/servers/server.service';
+
+const ssh = new NodeSSH();
 
 @Injectable()
 export class GTMContainerService {
@@ -80,6 +83,8 @@ export class GTMContainerService {
         }),
       );
 
+      await this._sshCreateGTMContainer(gtmContainer);
+
       await queryRunner.commitTransaction();
 
       return gtmContainer;
@@ -93,5 +98,36 @@ export class GTMContainerService {
     } finally {
       await queryRunner.release();
     }
+  }
+
+  private async _sshCreateGTMContainer(gtmContainer?: GTMContainerEntity) {
+    // container.server.ipAddress;
+    // container.domains[0].hostName; // DOMAIN
+    // container.config; // CONTAINER_CONFIG
+    // container.identifier; // IDENTIFIER
+
+    const params = [
+      gtmContainer.config,
+      gtmContainer.domains[0].hostName,
+      gtmContainer.identifier,
+    ];
+
+    ssh
+      .connect({
+        host: gtmContainer.server.ipAddress,
+        username: process.env.SSH_USERNAME,
+        // TODO: Use ssh privateKey
+        password: process.env.SSH_PASSWORD,
+      })
+      .then(() => {
+        ssh
+          .execCommand(`sh ./create-container.sh ${params.join(' ')}`, {
+            cwd: '/var/www/scripts',
+          })
+          .then((result) => {
+            console.log('STDOUT: ' + result.stdout);
+            console.log('STDERR: ' + result.stderr);
+          });
+      });
   }
 }
