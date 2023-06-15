@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Param,
   Post,
   Req,
   Res,
@@ -24,6 +25,7 @@ import { AuthenticationService } from './authentication.service';
 import { LocalAuthenticationGuard } from './guard/authentication.guard';
 import RequestWithUser from './interfaces/request-with-user.interface';
 import JwtAuthenticationGuard from './guard/jwt-authentication.guard';
+import { ConfirmationDto } from './dtos/confirmation.dto';
 
 @Controller('authentication')
 @ApiTags('authentication')
@@ -37,6 +39,37 @@ export class AuthenticationController {
     const { user } = request;
 
     return user;
+  }
+
+  @Get('validate/:token')
+  @HttpCode(HttpStatus.OK)
+  async validateToken(
+    @Param('token')
+    token: string,
+  ): Promise<{ result: string }> {
+    const email = await this.authenticationService.getEmailByConfirmationToken(
+      token,
+    );
+
+    // Or sent true/false
+    return { result: email };
+  }
+
+  @Post('confirmation')
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    type: CreateUserDto,
+    description: 'Successfully sent confirmation email',
+  })
+  @ApiBadRequestResponse({
+    description: 'User with that email already exists.',
+  })
+  @ApiInternalServerErrorResponse({ description: 'Internal server error' })
+  async confirmation(
+    @Body()
+    confirmationDto: ConfirmationDto,
+  ): Promise<boolean> {
+    return this.authenticationService.sendConfirmationEmail(confirmationDto);
   }
 
   @Post('registration')

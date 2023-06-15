@@ -1,3 +1,5 @@
 import { CreateUserDto } from 'src/users/user.dto';
 
-export class RegistrationDto extends CreateUserDto {}
+export class RegistrationDto extends CreateUserDto {
+  token: string;
+}
