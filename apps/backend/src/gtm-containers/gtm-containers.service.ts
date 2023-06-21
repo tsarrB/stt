@@ -43,7 +43,7 @@ export class GTMContainerService {
     await queryRunner.startTransaction();
 
     try {
-      const [server, user] = await Promise.all([
+      const [server, user] = (await Promise.all([
         this._serverRepository.findOne({
           where: { id: serverId },
         }),
@@ -51,7 +51,7 @@ export class GTMContainerService {
           where: { id: _user.id },
           relations: ['gtmContainers'],
         }),
-      ]);
+      ])) as [ServerEntity, UserEntity];
 
       const container = this._gtmContainerRepository.create({
         ...createGTMContainerDto,
@@ -100,7 +100,7 @@ export class GTMContainerService {
     }
   }
 
-  private async _sshCreateGTMContainer(gtmContainer?: GTMContainerEntity) {
+  private async _sshCreateGTMContainer(gtmContainer: GTMContainerEntity) {
     // container.server.ipAddress;
     // container.domains[0].hostName; // DOMAIN
     // container.config; // CONTAINER_CONFIG

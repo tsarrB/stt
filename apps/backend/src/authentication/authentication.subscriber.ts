@@ -33,7 +33,7 @@ export class AuthenticationSubscriber
     entity,
     databaseEntity,
   }: UpdateEvent<AuthenticationEntity>): Promise<void> {
-    if (entity.password) {
+    if (entity && entity.password) {
       const password = await AuthenticationProvider.generateHash(
         entity.password,
       );

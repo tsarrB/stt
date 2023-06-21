@@ -1,0 +1,23 @@
+{
+  "prettier.enable": false,
+  "editor.tabSize" : 2,
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste" : false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": false
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "stylelint.validate": [
+    "vue",
+    "css",
+    "scss",
+    "postcss"
+  ],
+  "cSpell.language": "en"
+}

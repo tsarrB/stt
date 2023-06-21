@@ -22,6 +22,7 @@ import { WrongCredentialsException } from './exceptions/wrong-credentials.except
 import { TokenPayload } from './interfaces/token-payload.interface';
 import { ConfirmationDto } from './dtos/confirmation.dto';
 import { TokenNotExistException } from './exceptions/token-not-exist.exception';
+import { UserNotExistException } from 'src/users/exceprions/user-not-exist.exception';
 
 const AUTHENTICATION_COOKIE_NAME = 'Authentication';
 
@@ -106,7 +107,11 @@ export class AuthenticationService {
       relations: ['user'],
     });
 
-    await this.verifyPassword(password, authentication?.password);
+    if (!authentication) {
+      throw new UserNotExistException();
+    }
+
+    await this.verifyPassword(password, authentication.password);
 
     return authentication.user;
   }
@@ -132,7 +137,7 @@ export class AuthenticationService {
   }
 
   public getCookieForLogout() {
-    return cookie.serialize(AUTHENTICATION_COOKIE_NAME, null, {
+    return cookie.serialize(AUTHENTICATION_COOKIE_NAME, '', {
       path: '/',
       httpOnly: true,
       maxAge: 0,

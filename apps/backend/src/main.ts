@@ -12,7 +12,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   const configService = app.get(ConfigService);
-  const PORT = +configService.get<number>('PORT');
+  const PORT = Number(configService.get<number>('PORT'));
 
   app.use(cookieParser());
 
