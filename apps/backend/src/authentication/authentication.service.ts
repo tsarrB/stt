@@ -48,8 +48,7 @@ export class AuthenticationService {
     });
 
     if (authentication) {
-      // TODO: send email with reset password link ???
-      return true;
+      throw new UserAlreadyExistException();
     }
 
     const token = uuid(20);

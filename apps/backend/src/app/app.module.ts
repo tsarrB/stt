@@ -25,6 +25,8 @@ import { NODE_ENV } from './constants';
           .required()
           .valid(NODE_ENV.DEVELOPMENT, NODE_ENV.PRODUCTION),
 
+        FRONTEND_URL: Joi.string().required(),
+
         POSTGRES_HOST: Joi.string().required(),
         POSTGRES_PORT: Joi.number().required(),
         POSTGRES_USER: Joi.string().required(),

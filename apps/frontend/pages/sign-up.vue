@@ -6,27 +6,30 @@ const router = useRouter()
 const data = ref({
   loading: false,
   email: '',
-  password: '',
 })
 
 async function onSubmit() {
   try {
-    await $api('/authentication/login', {
+    data.value.loading = true
+
+    await $api('/authentication/confirmation', {
       method: 'POST',
       body: JSON.stringify(data.value),
     })
-
-    await router.push('/')
   }
   catch (error: any) {
-    if (error.data.message === 'Wrong credentials provided') {
-      // TODO: show error message
-      console.log('Wrong credentials provided')
-      return
-    }
+    if (error.data.message === 'User with that email already exists')
+      return onSignIn()
 
     throw error
   }
+  finally {
+    data.value.loading = false
+  }
+}
+
+async function onSignIn() {
+  return router.push('/login')
 }
 </script>
 
@@ -37,11 +40,11 @@ async function onSubmit() {
         <div class="mx-auto p-8 text-center">
           <div>
             <h2 class="text-4xl tracking-tighter text-black">
-              Sign In
+              Sign Up
             </h2>
             <h3 class="mt-3 block text-sm font-medium text-gray-600" name="email">
-              Don't have an account yet? <NuxtLink class="underline" to="/sign-up" @click.prevent="data.isAuthorization = false">
-                Sign Up!
+              Already have an account? <NuxtLink class="underline" to="/login" @click.prevent="onSignIn">
+                Sign In!
               </NuxtLink>
             </h3>
           </div>
@@ -51,9 +54,6 @@ async function onSubmit() {
               <form class="space-y-2" @submit.prevent="onSubmit">
                 <div class="col-span-full">
                   <input id="email" v-model="data.email" class="block w-full appearance-none border border-gray-200 rounded-2 bg-white px-6 py-3 text-center text-black focus:border-blue-500 sm:text-sm placeholder:text-gray-400 focus:outline-none focus:ring-blue-500" placeholder="email@example.com" autocomplete="true" type="email">
-                </div>
-                <div class="col-span-full">
-                  <input id="password" v-model="data.password" class="block w-full appearance-none border border-gray-200 rounded-2 bg-white px-6 py-3 text-center text-black focus:border-blue-500 sm:text-sm placeholder:text-gray-400 focus:outline-none focus:ring-blue-500" placeholder="Your password" autocomplete="true" type="password">
                 </div>
                 <div class="col-span-full">
                   <button type="submit" class="block w-full border-2 border-black rounded-2 bg-black px-6 py-2.5 text-center text-sm text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus-visible:outline-black focus:outline-none focus-visible:ring-black" :disabled="data.loading">

@@ -8,6 +8,7 @@ import { EmailController } from './email.controller';
 
 @Module({
   imports: [
+    ConfigModule,
     MailerModule.forRootAsync({
       useFactory: async (config: ConfigService) => ({
         transport: {
