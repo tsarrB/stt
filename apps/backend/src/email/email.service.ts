@@ -10,9 +10,9 @@ export class EmailService {
   ) {}
 
   async sendConfirmation(email: any, token: string): Promise<void> {
-    const confirmation_url = `https://${this.configService.get(
+    const confirmation_url = `${this.configService.get(
       'FRONTEND_URL',
-    )}/auth/confirm?token=${token}`;
+    )}/confirmation?token=${token}`;
 
     await this.mailerService.sendMail({
       to: email,

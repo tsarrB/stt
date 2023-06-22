@@ -1,5 +1,13 @@
+<script setup lang="ts">
+const layout = computed(() => {
+  const route = useRoute()
+
+  return route.meta.layout || 'default'
+})
+</script>
+
 <template>
-  <NuxtLayout>
+  <NuxtLayout :name="layout">
     <NuxtPage />
   </NuxtLayout>
 </template>

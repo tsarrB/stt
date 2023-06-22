@@ -41,6 +41,7 @@ export class AuthenticationController {
     return user;
   }
 
+  // TODO: Add rate limiter
   @Get('validate/:token')
   @HttpCode(HttpStatus.OK)
   async validateToken(
@@ -55,6 +56,7 @@ export class AuthenticationController {
     return { result: email };
   }
 
+  // TODO: Add rate limiter
   @Post('confirmation')
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
@@ -72,6 +74,7 @@ export class AuthenticationController {
     return this.authenticationService.sendConfirmationEmail(confirmationDto);
   }
 
+  // TODO: Add rate limiter
   @Post('registration')
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
@@ -89,6 +92,7 @@ export class AuthenticationController {
     return this.authenticationService.registration(registrationDto);
   }
 
+  // TODO: Add rate limiter
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @UseGuards(LocalAuthenticationGuard)

@@ -77,7 +77,10 @@ export class AuthenticationService {
       );
 
       const user = await this.userService.createUser(
-        registrationParams,
+        {
+          email,
+          ...registrationParams,
+        },
         authentication,
         queryRunner,
       );

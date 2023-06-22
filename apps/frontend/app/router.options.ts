@@ -19,19 +19,33 @@ export default <RouterConfig>{
       name: 'home',
       path: '/',
       component: () => import('~/pages/home.vue'),
+    },
+    {
+      name: 'confirmation',
+      path: '/confirmation',
+      component: () => import('~/pages/confirmation.vue'),
       meta: {
-        auth: true,
+        auth: false,
+        layout: 'auth',
       },
     },
     {
       name: 'login',
       path: '/login',
       component: () => import('~/pages/login.vue'),
+      meta: {
+        auth: false,
+        layout: 'auth',
+      },
     },
     {
       name: 'sign-up',
       path: '/sign-up',
       component: () => import('~/pages/sign-up.vue'),
+      meta: {
+        auth: false,
+        layout: 'auth',
+      },
     },
   ],
 }

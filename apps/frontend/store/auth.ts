@@ -15,6 +15,14 @@ export const useAuthStore = defineStore({
 
       this.user = await $api('/authentication')
     },
+
+    async checkToken(token: string) {
+      const { $api } = useNuxtApp()
+
+      const { result } = await $api(`/authentication/validate/${token}`)
+
+      return result
+    },
   },
   getters: {
     isAuthenticated: state => !!state.user,
