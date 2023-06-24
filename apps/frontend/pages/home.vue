@@ -4,6 +4,7 @@ import { useAuthStore } from '~/store/auth'
 const authStore = useAuthStore()
 
 const user = computed(() => authStore.user)
+const gtmContainers = computed(() => authStore.gtmContainers)
 </script>
 
 <template>
@@ -12,6 +13,10 @@ const user = computed(() => authStore.user)
 
     <pre>
       {{ user }}
+    </pre>
+
+    <pre>
+      {{ gtmContainers }}
     </pre>
   </div>
 </template>

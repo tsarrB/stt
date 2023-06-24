@@ -31,6 +31,19 @@ export class GTMContainerService {
     private readonly _connection: Connection,
   ) {}
 
+  async getAllGTMContainers(_user: UserEntity): Promise<GTMContainerEntity[]> {
+    const user = (await this._userRepository.findOne({
+      where: { id: _user.id },
+      relations: [
+        'gtmContainers',
+        'gtmContainers.domains',
+        'gtmContainers.server',
+      ],
+    })) as UserEntity;
+
+    return user.gtmContainers;
+  }
+
   async createGTMContainer(
     _user: UserEntity,
     createGTMContainerDto: CreateGTMContainerDto,

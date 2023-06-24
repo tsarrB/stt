@@ -5,6 +5,7 @@ import {
   HttpStatus,
   Post,
   Req,
+  Get,
   UseGuards,
 } from '@nestjs/common';
 import { GTMContainerService } from './gtm-containers.service';
@@ -21,6 +22,15 @@ import JwtAuthenticationGuard from 'src/authentication/guard/jwt-authentication.
 @ApiTags('gtm-containers')
 export class GTMContainerController {
   constructor(private readonly _gtmContainerService: GTMContainerService) {}
+
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(JwtAuthenticationGuard)
+  getAll(@Req() request: RequestWithUser) {
+    const { user } = request;
+
+    return this._gtmContainerService.getAllGTMContainers(user);
+  }
 
   @Post('create')
   @HttpCode(HttpStatus.OK)
