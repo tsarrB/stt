@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useAuthStore } from '~/store/auth'
+import ContainersList from '~/components/ContainersList/ContainersList.vue'
 
 const authStore = useAuthStore()
 
@@ -9,11 +10,11 @@ const gtmContainers = computed(() => authStore.gtmContainers)
 
 <template>
   <div>
-    <h1>Home Page</h1>
+    <h1 class="mb-8">
+      Home Page
+    </h1>
 
-    <pre>
-      {{ user }}
-    </pre>
+    <ContainersList :containers="gtmContainers" />
 
     <pre>
       {{ gtmContainers }}

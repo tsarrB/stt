@@ -2,8 +2,18 @@
 export default defineNuxtConfig({
   ssr: false,
   pages: true,
+  components: [
+    { path: '~/Ui', global: true, prefix: 'Ui' },
+    '~/components',
+  ],
 
   plugins: ['./plugins/api'],
+
+  runtimeConfig: {
+    public: {
+      apiURL: process.env.API_URL,
+    },
+  },
 
   devtools: {
     // Enable devtools (default: true)

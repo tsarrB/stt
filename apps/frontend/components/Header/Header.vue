@@ -1,21 +1,29 @@
 <script lang="ts" setup>
+import { useAuthStore } from '~/store/auth'
+import { prepareAvatar } from '~/utils/boring-avatars'
+
+const authStore = useAuthStore()
+
 const burgerMenuOpened = ref(false)
 const profileMenuOpened = ref(false)
 
 const { $api } = useNuxtApp()
+
+const user = computed(() => authStore.user)
+const email = computed(() => user.value.authentication.email)
 
 async function logout() {
   await $api('/authentication/logout', {
     method: 'POST',
   })
 
-  window.location.href = '/'
+  window.location.reload()
 }
 </script>
 
 <template>
-  <div class="mx-auto w-full border-b bg-white 2xl:max-w-7xl">
-    <div class="relative mx-auto w-full flex flex-col bg-white p-5 md:flex-row md:items-center md:justify-between lg:px-8 md:px-6">
+  <UiContainer class="border-b bg-white">
+    <div class="relative mx-auto w-full flex flex-col bg-white py-5 md:flex-row md:items-center md:justify-between">
       <div class="flex flex-row items-center justify-between lg:justify-start">
         <NuxtLink class="text-lg tracking-tight uppercase text-black lg:text-2xl focus:outline-none focus:ring" to="/">
           <span class="uppecase lg:text-lg focus:ring-0">
@@ -49,7 +57,7 @@ async function logout() {
                 <span class="sr-only">
                   Open user menu
                 </span>
-                <img class="h-8 w-8 rounded-full object-cover" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80" alt="">
+                <img class="h-8 w-8 rounded-full object-cover" :src="prepareAvatar(email)" alt="">
               </button>
             </div>
 
@@ -67,12 +75,8 @@ async function logout() {
               </a>
             </div>
           </div>
-
-          <button class="group inline-flex items-center justify-center rounded-full bg-black p-4 text-sm font-semibold text-white active:bg-gray-800 hover:bg-gray-700 active:text-white focus-visible:outline-2 focus-visible:outline-blue-900 focus-visible:outline-offset-2 focus:outline-none">
-            <i name="add-outline" role="img" class="md hydrated i-carbon:add" aria-label="add outline" />
-          </button>
         </div>
       </nav>
     </div>
-  </div>
+  </UiContainer>
 </template>
