@@ -21,12 +21,13 @@ export class CreateGTMContainerDto {
   readonly config: string;
 
   @IsBoolean()
+  @IsOptional()
   @ApiProperty()
   readonly renewal: boolean;
 
-  @IsNumber()
+  @IsString()
   @ApiProperty()
-  readonly serverId: number;
+  readonly serverId: string;
 }
 
 export class UpdateGTMContainerDto {
@@ -52,8 +53,8 @@ export class UpdateGTMContainerDto {
   @ApiProperty()
   readonly renewal: boolean;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
   @ApiProperty()
-  readonly serverId: number;
+  readonly serverId: string;
 }

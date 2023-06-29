@@ -13,6 +13,10 @@ export class ServerService {
     private readonly _connection: Connection,
   ) {}
 
+  async findAll(): Promise<ServerEntity[]> {
+    return this._serverRepository.find();
+  }
+
   async createServer(createServerDto: CreateServerDto): Promise<ServerEntity> {
     const queryRunner = this._connection.createQueryRunner();
 

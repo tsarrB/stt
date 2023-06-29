@@ -10,7 +10,7 @@ import { GTMContainerAlreadyExistException } from './exceptions/gtm-container-ex
 import { UserEntity } from 'src/users/user.entity';
 import { ServerEntity } from 'src/servers/server.entity';
 import { DomainEntity } from 'src/domains/domains.entity';
-import { rootDomain } from 'src/constants';
+import { ConfigService } from '@nestjs/config';
 // import { ServerService } from 'src/servers/server.service';
 
 const ssh = new NodeSSH();
@@ -25,7 +25,7 @@ export class GTMContainerService {
     @InjectRepository(ServerEntity)
     private _serverRepository: Repository<ServerEntity>,
     @InjectRepository(DomainEntity)
-    private _domainRepository: Repository<DomainEntity>,
+    private readonly configService: ConfigService,
 
     private readonly domainService: DomainService,
     private readonly _connection: Connection,
@@ -58,7 +58,7 @@ export class GTMContainerService {
     try {
       const [server, user] = (await Promise.all([
         this._serverRepository.findOne({
-          where: { id: serverId },
+          where: { uuid: serverId },
         }),
         this._userRepository.findOne({
           where: { id: _user.id },
@@ -73,6 +73,7 @@ export class GTMContainerService {
         domains: [],
       });
 
+      // Create default domain for gtm container `identifier.servertagtracking.com`
       const domain = await this.domainService.createGTMContainerDomain(
         queryRunner,
         container,
@@ -86,15 +87,6 @@ export class GTMContainerService {
       user.gtmContainers.push(gtmContainer);
 
       await queryRunner.manager.save(user);
-
-      // Create default domain for gtm container `identifier.servertagtracking.com`
-      await queryRunner.manager.save(
-        this._domainRepository.create({
-          hostName: `${gtmContainer.identifier}.${rootDomain}`,
-          server,
-          gtmContainer,
-        }),
-      );
 
       await this._sshCreateGTMContainer(gtmContainer);
 
@@ -114,6 +106,12 @@ export class GTMContainerService {
   }
 
   private async _sshCreateGTMContainer(gtmContainer: GTMContainerEntity) {
+    const IS_CREATING_REAL_CONTAINER = this.configService.get(
+      'IS_CREATING_REAL_CONTAINER',
+    );
+
+    if (!IS_CREATING_REAL_CONTAINER) return;
+
     // container.server.ipAddress;
     // container.domains[0].hostName; // DOMAIN
     // container.config; // CONTAINER_CONFIG

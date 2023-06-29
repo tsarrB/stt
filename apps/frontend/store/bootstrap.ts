@@ -2,26 +2,37 @@ import { defineStore } from 'pinia'
 
 interface IState {
   user: any | null
+  servers: any[]
   gtmContainers: any[]
 }
 
-export const useAuthStore = defineStore({
+export const useBootstrapStore = defineStore({
   id: 'auth-store',
   state: (): IState => ({
     user: null,
+    servers: [],
     gtmContainers: [],
   }),
   actions: {
-    async fetchUser() {
+    async fetch() {
       const { $api } = useNuxtApp()
 
-      const [user, gtmContainers] = await Promise.all([
+      const [user, servers] = await Promise.all([
         $api('/authentication'),
-        $api('/gtm-containers'),
+        $api('/servers'),
+        this.fetchContainers(),
       ])
 
       this.user = user
-      this.gtmContainers = gtmContainers
+      this.servers = servers
+    },
+
+    async fetchContainers() {
+      const { $api } = useNuxtApp()
+
+      const result = await $api('/gtm-containers')
+
+      this.gtmContainers = result
     },
 
     async checkToken(token: string) {

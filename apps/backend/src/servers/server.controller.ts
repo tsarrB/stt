@@ -1,4 +1,11 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 import {
   ApiInternalServerErrorResponse,
   ApiOkResponse,
@@ -11,6 +18,12 @@ import { CreateServerDto } from './server.dto';
 @ApiTags('servers')
 export class ServerController {
   constructor(private readonly _serverService: ServerService) {}
+
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  get() {
+    return this._serverService.findAll();
+  }
 
   @Post('create')
   @HttpCode(HttpStatus.OK)

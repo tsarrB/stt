@@ -1,14 +1,13 @@
-import { useAuthStore } from '~/store/auth'
+import { useBootstrapStore } from '~/store/bootstrap'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-  const authStore = useAuthStore()
+  const bootstrapStore = useBootstrapStore()
 
-  if (to.meta.auth === false)
+  if (to.meta.auth === false || bootstrapStore.isAuthenticated)
     return
 
   try {
-    if (!authStore.isAuthenticated)
-      await authStore.fetchUser()
+    await bootstrapStore.fetch()
   }
   catch (error) {
     return navigateTo('/login')

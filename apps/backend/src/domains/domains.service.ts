@@ -70,7 +70,6 @@ export class DomainService {
 
       return domain;
     } catch (error) {
-      console.log(error);
       if (error?.code === PostgresErrorCode.UniqueViolation) {
         throw new DomainAlreadyExistException();
       }
@@ -80,6 +79,13 @@ export class DomainService {
   }
 
   private async _createDomain(params: CreateDomain): Promise<void> {
+    const IS_CREATING_REAL_DOMAIN = this.configService.get(
+      'IS_CREATING_REAL_DOMAIN',
+    );
+
+    // For development and testing purposes
+    if (!IS_CREATING_REAL_DOMAIN) return;
+
     const CLOUDFLARE_API_KEY = this.configService.get('CLOUDFLARE_API_KEY');
     const ZONE_IDENTIFIER = this.configService.get(
       'CLOUDFLARE_ZONE_IDENTIFIER',

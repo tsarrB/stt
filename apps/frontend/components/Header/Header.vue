@@ -1,15 +1,16 @@
 <script lang="ts" setup>
-import { useAuthStore } from '~/store/auth'
+import { vOnClickOutside } from '@vueuse/components'
+import { useBootstrapStore } from '~/store/bootstrap'
 import { prepareAvatar } from '~/utils/boring-avatars'
 
-const authStore = useAuthStore()
+const bootstrapStore = useBootstrapStore()
 
 const burgerMenuOpened = ref(false)
 const profileMenuOpened = ref(false)
 
 const { $api } = useNuxtApp()
 
-const user = computed(() => authStore.user)
+const user = computed(() => bootstrapStore.user)
 const email = computed(() => user.value.authentication.email)
 
 async function logout() {
@@ -40,9 +41,9 @@ async function logout() {
         </button>
       </div>
       <nav :class="{ flex: burgerMenuOpened, hidden: !burgerMenuOpened }" class="flex-grow flex-col items-center md:flex md:flex-row md:justify-end md:pb-0">
-        <a class="px-2 py-2 text-sm text-gray-500 lg:ml-auto lg:px-6 md:px-3 hover:text-blue-600" href="#">
+        <NuxtLink to="/" class="px-2 py-2 text-sm text-gray-500 lg:ml-auto lg:px-6 md:px-3 hover:text-blue-600" href="#">
           Dashboard
-        </a>
+        </NuxtLink>
         <a class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600" href="#">
           sGTM Containers
         </a>
@@ -52,7 +53,7 @@ async function logout() {
 
         <div class="inline-flex list-none items-center gap-2 lg:ml-auto">
           <div class="relative ml-5 flex-shrink-0">
-            <div>
+            <div v-on-click-outside="() => profileMenuOpened = false">
               <button id="user-menu-button" type="button" class="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false" aria-haspopup="true" @click="profileMenuOpened = !profileMenuOpened">
                 <span class="sr-only">
                   Open user menu

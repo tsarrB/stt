@@ -1,15 +1,16 @@
 <script lang="ts" setup>
-import { useAuthStore } from '~/store/auth'
+import { useBootstrapStore } from '~/store/bootstrap'
 
 const { $api } = useNuxtApp()
-const authStore = useAuthStore()
+
+const bootstrapStore = useBootstrapStore()
 
 const route = useRoute()
 const router = useRouter()
 
 const { data, error } = await useAsyncData(
   'confirmation-email',
-  () => authStore.checkToken(route.query.token as string),
+  () => bootstrapStore.checkToken(route.query.token as string),
 )
 
 if (error.value)

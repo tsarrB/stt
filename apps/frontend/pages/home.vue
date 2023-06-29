@@ -1,24 +1,16 @@
 <script lang="ts" setup>
-import { useAuthStore } from '~/store/auth'
+import { useBootstrapStore } from '~/store/bootstrap'
 import ContainersList from '~/components/ContainersList/ContainersList.vue'
 
-const authStore = useAuthStore()
+const bootstrapStore = useBootstrapStore()
 
-const user = computed(() => authStore.user)
-const gtmContainers = computed(() => authStore.gtmContainers)
+// const user = computed(() => bootstrapStore.user)
+const gtmContainers = computed(() => bootstrapStore.gtmContainers)
 </script>
 
 <template>
   <div>
-    <h1 class="mb-8">
-      Home Page
-    </h1>
-
     <ContainersList :containers="gtmContainers" />
-
-    <pre>
-      {{ gtmContainers }}
-    </pre>
   </div>
 </template>
 
