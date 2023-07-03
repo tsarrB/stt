@@ -1,10 +1,6 @@
-<p align="center">
-  The platform for creating and managing sGTM containers
-</p>
-
 # What is this?
 
-This is a simple dashboard with a backend to manage sGTM (server-side Google Tag Manager) containers on servers.
+The platform for creating and managing sGTM containers
 
 # Features
   - [x] Login and register

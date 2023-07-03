@@ -1,10 +1,19 @@
 {
-  "name": "monorepo",
+  "name": "sst",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "license": "ISC",
-  "author": "",
+  "description": "The platform for creating and managing sGTM containers",
+  "keywords": [
+    "vue",
+    "vue3",
+    "sGTM",
+    "server tracking"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Bohdan Tsaryk",
+    "email": "bogdan.tsaryk@gmail.com",
+    "url": "https://twitter.com/bruce_developer"
+  },
   "main": "index.js",
   "scripts": {
     "backend": "pnpm --filter backend run",
