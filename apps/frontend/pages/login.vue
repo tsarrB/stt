@@ -10,6 +10,8 @@ const data = ref({
 })
 
 async function onSubmit() {
+  data.value.loading = true
+
   try {
     await $api('/authentication/login', {
       method: 'POST',
@@ -25,6 +27,8 @@ async function onSubmit() {
     }
 
     throw error
+  } finally {
+    data.value.loading = false
   }
 }
 
@@ -59,9 +63,9 @@ function onSignUp() {
                   <input id="password" v-model="data.password" name="password" class="block w-full appearance-none border border-gray-200 rounded-2 bg-white px-6 py-3 text-center text-black focus:border-blue-500 sm:text-sm placeholder:text-gray-400 focus:outline-none focus:ring-blue-500" placeholder="Your password" autocomplete="true" type="password">
                 </div>
                 <div class="col-span-full">
-                  <button type="submit" class="block w-full border-2 border-black rounded-2 bg-black px-6 py-2.5 text-center text-sm text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus-visible:outline-black focus:outline-none focus-visible:ring-black" :disabled="data.loading">
-                    <span> Continue </span>
-                  </button>
+                  <UiButton class="w-full" type="submit" :loading="data.loading">
+                    Continue
+                  </UiButton>
                 </div>
               </form>
             </div>
