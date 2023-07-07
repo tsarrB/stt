@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiInternalServerErrorResponse,
@@ -13,9 +14,11 @@ import {
 } from '@nestjs/swagger';
 import { ServerService } from './server.service';
 import { CreateServerDto } from './server.dto';
+import JwtAuthenticationGuard from 'src/authentication/guard/jwt-authentication.guard';
 
 @Controller('servers')
 @ApiTags('servers')
+@UseGuards(JwtAuthenticationGuard)
 export class ServerController {
   constructor(private readonly _serverService: ServerService) {}
 
@@ -36,6 +39,7 @@ export class ServerController {
     @Body()
     createServerDto: CreateServerDto,
   ) {
+    // TODO: Only superadmin can create servers
     return this._serverService.createServer(createServerDto);
   }
 }

@@ -6,6 +6,7 @@ The platform for creating and managing sGTM containers
   - [x] Login and register
   - [x] Create containers
   - [x] Each user can have multiple containers and each container can have multiple users.
+  - [ ] Custom domains (WIP)
   - [ ] FB Conversion API integration
   - [ ] Billing
   - [ ] Usage statistics

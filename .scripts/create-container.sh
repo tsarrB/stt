@@ -10,7 +10,7 @@ do
   continue
 done
 
-# 2. Start container on this port < CONTAINER_CONFIG, PORT
+# 2. Start container on this port < CONTAINER_CONFIG, PORT // Maybe change --name to -t ??
 docker run -d -p $FREE_PORT:$FREE_PORT -e CONTAINER_CONFIG=$1 -e PORT=$FREE_PORT --name $3 gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable
 
 # 3. Prepare nginx config for this port and container < PORT, DOMAIN

@@ -41,12 +41,9 @@ async function logout() {
         </button>
       </div>
       <nav :class="{ flex: burgerMenuOpened, hidden: !burgerMenuOpened }" class="flex-grow flex-col items-center md:flex md:flex-row md:justify-end md:pb-0">
-        <NuxtLink to="/" class="px-2 py-2 text-sm text-gray-500 lg:ml-auto lg:px-6 md:px-3 hover:text-blue-600" href="#">
-          Dashboard
-        </NuxtLink>
-        <a class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600" href="#">
+        <NuxtLink to="/" class="px-2 py-2 text-sm text-gray-500 lg:ml-auto lg:px-6 md:px-3 hover:text-blue-600">
           sGTM Containers
-        </a>
+        </NuxtLink>
         <a class="px-2 py-2 text-sm text-gray-500 lg:px-6 md:px-3 hover:text-blue-600" href="#">
           Tools
         </a>
