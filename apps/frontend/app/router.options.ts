@@ -26,6 +26,11 @@ export default <RouterConfig>{
       component: () => import('~/pages/container/create.vue'),
     },
     {
+      name: 'container-page',
+      path: '/container/:slug',
+      component: () => import('~/pages/container/_slug.vue'),
+    },
+    {
       name: 'confirmation',
       path: '/confirmation',
       component: () => import('~/pages/confirmation.vue'),

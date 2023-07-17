@@ -45,5 +45,10 @@ export const useBootstrapStore = defineStore({
   },
   getters: {
     isAuthenticated: state => !!state.user,
+    gtmContainersDict: state => state.gtmContainers.reduce((acc, container) => {
+      acc[container.uuid] = container
+
+      return acc
+    }, {}) as Record<string, any>,
   },
 })
