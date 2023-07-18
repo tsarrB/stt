@@ -105,66 +105,67 @@ function VerizonLogo() {
 </script>
 
 <template>
-  <Container class="flex flex-wrap">
-    <div class="w-full flex items-center lg:w-1/2">
-      <div class="mb-8 max-w-2xl">
-        <h1 class="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl xl:text-6xl lg:leading-tight xl:leading-tight dark:text-white">
-          Free Landing Page Template for startups
-        </h1>
-        <p class="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-          Nextly is a free landing page & marketing website
-          template for startups and indie projects. Its built with
-          Next.js & TailwindCSS. And its completely open-source.
-        </p>
+  <Container class="px-4 py-16 lg:px-8 lg:py-20 md:px-24">
+    <div class="mx-auto max-w-2xl md:max-w-2xl sm:max-w-xl">
+      <div class="text-center">
+        <div class="mb-10 max-w-xl md:mx-auto md:mb-12 lg:max-w-2xl sm:text-center">
+          <div class="">
+            <p class="mb-4 inline-block rounded-full bg-teal-400 px-3 py-px text-xs font-semibold tracking-wider uppercase text-teal-900">
+              Brand new
+            </p>
+          </div>
+          <h2 class="mb-6 max-w-lg font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 md:mx-auto sm:text-4xl">
+            <span class="relative inline-block">
+              <svg viewBox="0 0 52 24" fill="currentColor" class="absolute left-0 top-0 z-0 hidden w-32 text-blue-gray-200 -ml-20 -mt-8 sm:block lg:w-32 lg:-ml-28 lg:-mt-10">
+                <defs>
+                  <pattern id="b039bae0-fdd5-4311-b198-8557b064fce0" x="0" y="0" width=".135" height=".30">
+                    <circle cx="1" cy="1" r=".7" />
+                  </pattern>
+                </defs>
+                <rect fill="url(#b039bae0-fdd5-4311-b198-8557b064fce0)" width="52" height="24" />
+              </svg>
 
-        <div class="flex flex-col items-start sm:flex-row sm:items-center space-y-3 sm:space-x-4 sm:space-y-0">
-          <a
-            href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
-            target="_blank"
-            rel="noopener"
-            class="rounded-md bg-indigo-600 px-8 py-4 text-center text-lg font-medium text-white"
-          >
-            Download for Free
-          </a>
-          <a
-            href="https://github.com/web3templates/nextly-template/"
-            target="_blank"
-            rel="noopener"
-            class="flex items-center text-gray-500 space-x-2 dark:text-gray-400"
-          >
-            <svg
-              role="img"
-              width="24"
-              height="24"
-              class="h-5 w-5"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>GitHub</title>
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-            </svg>
-            <span> View on Github</span>
-          </a>
+              <span class="relative">The</span>
+            </span>
+            easiest way to server-side tracking
+          </h2>
+          <p class="text-base text-gray-700 md:text-lg">
+            Setting up server-side tracking can be challenging. Get started right away with our suite of tools.
+          </p>
         </div>
-      </div>
-    </div>
-    <div class="w-full flex items-center justify-center lg:w-1/2">
-      <div class="">
-        <img
-          src="/img/hero.png"
-          width="616"
-          height="617"
-          class="{&quot;object-cover&quot;}"
-          alt="Hero Illustration"
-          loading="eager"
-          placeholder="blur"
+        <form class="mb-4 w-full flex flex-col items-center md:flex-row md:px-16">
+          <input
+            placeholder="Enter your email"
+            required
+            type="text"
+            class="focus:shadow-outline mb-3 h-12 w-full flex-grow appearance-none border border-gray-300 rounded bg-white px-4 shadow-sm transition duration-200 md:mb-0 md:mr-2 focus:border-indigo-600 focus:outline-none"
+          >
+
+          <button
+            type="submit"
+            class="focus:shadow-outline h-12 w-full inline-flex items-center justify-center whitespace-nowrap rounded bg-indigo-600 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:w-auto hover:bg-indigo-700 focus:outline-none"
+          >
+            Try for free
+          </button>
+        </form>
+
+        <p class="mx-auto mb-10 max-w-md text-xs text-gray-600 md:mb-16 sm:text-sm">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+        </p>
+        <a
+          href="/"
+          aria-label="Scroll down"
+          class="mx-auto h-10 w-10 flex transform items-center justify-center border border-gray-400 rounded-full text-gray-600 duration-300 hover:scale-110 hover:border-indigo-400 hover:text-indigo-400 hover:shadow"
         >
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+            <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z" />
+          </svg>
+        </a>
       </div>
     </div>
   </Container>
 
-  <Container>
+  <!-- <Container>
     <div class="flex flex-col justify-center">
       <div class="text-center text-xl text-gray-700 dark:text-white">
         Trusted by <span class="text-indigo-600">2000+</span>{{ " " }}
@@ -179,5 +180,5 @@ function VerizonLogo() {
         <div class="pt-2 text-gray-400 dark:text-gray-400" v-html="SonyLogo()" />
       </div>
     </div>
-  </Container>
+  </Container> -->
 </template>

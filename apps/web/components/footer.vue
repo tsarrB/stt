@@ -18,13 +18,13 @@ const legal = ['Terms', 'Privacy', 'Legal']
             {{ " " }}
             <NuxtLink to="/" class="flex items-center text-2xl font-medium text-indigo-500 space-x-2 dark:text-gray-100">
               <img
-                src="/img/logo.svg"
+                src="/img/logo2.svg"
                 alt="N"
                 width="32"
                 height="32"
                 class="w-8"
               >
-              <span>Nextly</span>
+              <span>Tracking</span>
             </NuxtLink>
           </div>
 
