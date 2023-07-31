@@ -1,4 +1,15 @@
 <script lang="ts" setup>
+const route = useRoute()
+const router = useRouter()
+
+function onOpenCallback() {
+  router.replace({
+    query: {
+      ...route.query,
+      callback: 'true',
+    },
+  })
+}
 </script>
 
 <template>
@@ -24,14 +35,24 @@
 
               <span class="relative">The</span>
             </span>
-            simplest method to server-side tracking
+            simplest method to <span class="whitespace-nowrap">server-side tracking</span>
           </h2>
           <p class="text-base text-gray-700 md:text-lg dark:text-gray-300">
             Starting server-side tracking can be a difficult task, but with our set of tools, you can begin promptly.
           </p>
         </div>
 
-        <form class="mb-4 w-full flex flex-col items-center md:flex-row md:px-16">
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            class="focus:shadow-outline h-12 min-w-280px w-full inline-flex items-center justify-center whitespace-nowrap rounded bg-blue-600 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:w-auto hover:bg-blue-700 focus:outline-none"
+            @click="onOpenCallback"
+          >
+            Contact for try
+          </button>
+        </div>
+
+        <!-- <form class="mb-4 w-full flex flex-col items-center md:flex-row md:px-16">
           <input
             placeholder="Enter your email"
             required
@@ -45,7 +66,7 @@
           >
             Try for free
           </button>
-        </form>
+        </form> -->
       </div>
     </div>
   </Container>

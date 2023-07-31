@@ -5,9 +5,10 @@
 <template>
   <main>
     <Navbar />
-
     <slot />
 
     <Footer />
+
+    <CallbackModal />
   </main>
 </template>

@@ -53,9 +53,9 @@ import { main as mainMenu } from '~/constants/menu'
               {{ item.title }}
             </NuxtLink>
 
-            <NuxtLink to="/" class="mt-3 w-full rounded-md bg-blue-600 px-6 py-2 text-center text-white lg:ml-5">
-              Get Started
-            </NuxtLink>
+            <a href="/" class="mt-3 w-full rounded-md bg-blue-600 px-6 py-2 text-center text-white lg:ml-5">
+              Login & Sign Up
+            </a>
           </DisclosurePanel>
         </div>
       </Disclosure>
@@ -72,9 +72,9 @@ import { main as mainMenu } from '~/constants/menu'
       </div>
 
       <div class="nav__item mr-3 hidden lg:flex space-x-4">
-        <NuxtLink to="/" class="rounded-md bg-blue-600 px-6 py-2 text-white md:ml-5">
-          Get Started
-        </NuxtLink>
+        <a href="/" class="rounded-md bg-blue-600 px-6 py-2 text-white md:ml-5">
+          Login & Sign Up
+        </a>
 
         <ThemeChanger />
       </div>
