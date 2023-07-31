@@ -11,12 +11,11 @@ const theme = useColorMode()
       class="rounded-full text-gray-300 outline-none focus:outline-none"
       @click="theme = 'light'"
     >
-      <!-- <span class="sr-only">Light Mode</span> -->
-
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
-        viewBox="0 0 20 20"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="currentColor"
       >
         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
@@ -28,7 +27,6 @@ const theme = useColorMode()
       class="rounded-full text-gray-500 outline-none focus:outline-none focus-visible:ring focus-visible:ring-gray-100 focus:ring-opacity-20"
       @click="theme = 'dark'"
     >
-      <!-- <span class="sr-only">Dark Mode</span> -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

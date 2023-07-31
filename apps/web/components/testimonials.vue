@@ -27,7 +27,7 @@ const Mark = createReusableTemplate()
   </Avatar.define>
 
   <Mark.define v-slot="{ $slots }">
-    <mark class="rounded-md bg-indigo-100 text-indigo-800 ring-4 ring-indigo-100 dark:bg-indigo-900 dark:text-indigo-200 dark:ring-indigo-900">
+    <mark class="rounded-md bg-blue-100 text-blue-800 ring-4 ring-blue-100 dark:bg-blue-900 dark:text-blue-200 dark:ring-blue-900">
       <component :is="$slots.default" />
     </mark>
   </Mark.define>

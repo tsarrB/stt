@@ -1,54 +1,54 @@
 import {
-  AdjustmentsHorizontalIcon,
   ChartBarSquareIcon,
+  CloudIcon,
   CursorArrowRaysIcon,
-  DevicePhoneMobileIcon,
-  FaceSmileIcon,
-  SunIcon,
+  RocketLaunchIcon,
+  ServerStackIcon,
+  ShieldCheckIcon,
 } from '@heroicons/vue/24/solid'
 
 const benefitOne = {
-  title: 'Highlight your benefits',
-  desc: 'You can use this space to highlight your first benefit or a feature of your product. It can also contain an image or Illustration like in the example along with some bullet points.',
-  image: '/img/benefit-one.png',
+  title: 'Everything is evolving – marketing and analytics are no exception.',
+  desc: 'Since some browsers have already started eliminating third party cookies, we need to start looking for a solution to keep collecting data and ensure that our data is reliable.',
+  image: '/img/benefit-1.svg',
   bullets: [
     {
-      title: 'Understand your customers',
-      desc: 'Then explain the first point breifly in one or two lines.',
-      icon: FaceSmileIcon,
+      title: 'We are a one-stop shop',
+      desc: 'We\'re building an infrastructure that simplifies server-side tracking. Everything from cloud hosting to custom solutions.',
+      icon: CloudIcon,
     },
     {
-      title: 'Improve acquisition',
-      desc: 'Here you can add the next benefit point.',
+      title: 'Save time and money',
+      desc: 'Cheaper. Better. Faster. Stronger. Get all the tools you need and enjoy every step with Stape.',
       icon: ChartBarSquareIcon,
     },
     {
-      title: 'Drive customer retention',
-      desc: 'This will be your last bullet point in this section.',
+      title: 'Get the help you need',
+      desc: 'We\'ve been working in this niche for several years. If you\'re experiencing issues with setting up server-side tracking, we’re here to help you out!',
       icon: CursorArrowRaysIcon,
     },
   ],
 }
 
 const benefitTwo = {
-  title: 'Offer more benefits here',
-  desc: 'You can use this same layout with a flip image to highlight your rest of the benefits of your product. It can also contain an image or Illustration as above section along with some bullet points.',
-  image: '/img/benefit-two.png',
+  title: 'A few large advantages',
+  desc: 'Moving the tracking mechanism for browser scripts to your own server brings you many benefits:',
+  image: '/img/benefit-2.svg',
   bullets: [
     {
-      title: 'Mobile Responsive Template',
-      desc: 'Nextly is designed as a mobile first responsive template.',
-      icon: DevicePhoneMobileIcon,
+      title: 'Performance gain',
+      desc: 'Instead of sending the requests to the user, they can now be sent to the server. That lowers the load time, which increases your website’s speed.',
+      icon: RocketLaunchIcon,
     },
     {
-      title: 'Powered by Next.js & TailwindCSS',
-      desc: 'This template is powered by latest technologies and tools.',
-      icon: AdjustmentsHorizontalIcon,
+      title: 'Data accuracy',
+      desc: 'With server-side tracking, all cookies can be put in a first-party context – something browsers and adblockers don’t affect.',
+      icon: ServerStackIcon,
     },
     {
-      title: 'Dark & Light Mode',
-      desc: 'Nextly comes with a zero-config light & dark mode. ',
-      icon: SunIcon,
+      title: 'A better grasp on security',
+      desc: 'When you migrate these scripts to a server, you get a better handle on which data is collected and which data is sent to an external party such as Google and Facebook.',
+      icon: ShieldCheckIcon,
     },
   ],
 }

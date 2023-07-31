@@ -16,9 +16,9 @@ const legal = ['Terms', 'Privacy', 'Legal']
         <div class="lg:col-span-2">
           <div>
             {{ " " }}
-            <NuxtLink to="/" class="flex items-center text-2xl font-medium text-indigo-500 space-x-2 dark:text-gray-100">
+            <NuxtLink to="/" class="flex items-center text-2xl font-medium text-blue-500 space-x-2 dark:text-gray-100">
               <img
-                src="/img/logo2.svg"
+                src="/img/logo.svg"
                 alt="N"
                 width="32"
                 height="32"
@@ -29,22 +29,21 @@ const legal = ['Terms', 'Privacy', 'Legal']
           </div>
 
           <div class="mt-4 max-w-md text-gray-500 dark:text-gray-400">
-            Nextly is a free landing page & marketing website
-            template for startups and indie projects. Its built with
-            Next.js & TailwindCSS. And its completely open-source.
+            <!-- TODO: Change this -->
+            The simplest method to server-side tracking
           </div>
         </div>
 
         <div>
           <div class="w-full flex flex-wrap -ml-3 -mt-2 lg:ml-0">
-            <NuxtLink v-for="(item, index) in navigation" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 focus:bg-indigo-100 dark:text-gray-300 focus:text-indigo-500 hover:text-indigo-500 focus:outline-none dark:focus:bg-trueGray-700">
+            <NuxtLink v-for="(item, index) in navigation" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 focus:bg-blue-100 dark:text-gray-300 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-trueGray-700">
               {{ item }}
             </NuxtLink>
           </div>
         </div>
         <div>
           <div class="w-full flex flex-wrap -ml-3 -mt-2 lg:ml-0">
-            <NuxtLink v-for="(item, index) in legal" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 focus:bg-indigo-100 dark:text-gray-300 focus:text-indigo-500 hover:text-indigo-500 focus:outline-none dark:focus:bg-trueGray-700">
+            <NuxtLink v-for="(item, index) in legal" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 focus:bg-blue-100 dark:text-gray-300 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-trueGray-700">
               {{ item }}
             </NuxtLink>
           </div>
@@ -53,7 +52,7 @@ const legal = ['Terms', 'Privacy', 'Legal']
           <div>Follow us</div>
           <div class="mt-5 flex text-gray-400 space-x-5 dark:text-gray-500">
             <a
-              href="https://twitter.com/web3templates"
+              href="#"
               target="_blank"
               rel="noopener"
             >
@@ -69,7 +68,7 @@ const legal = ['Terms', 'Privacy', 'Legal']
               </svg>
             </a>
             <a
-              href="https://facebook.com/web3templates"
+              href="#"
               target="_blank"
               rel="noopener"
             >
@@ -85,7 +84,7 @@ const legal = ['Terms', 'Privacy', 'Legal']
               </svg>
             </a>
             <a
-              href="https://instagram.com/web3templates"
+              href="#"
               target="_blank"
               rel="noopener"
             >
@@ -121,21 +120,13 @@ const legal = ['Terms', 'Privacy', 'Legal']
       </div>
 
       <div class="my-10 text-center text-sm text-gray-600 dark:text-gray-400">
-        Copyright © {{ new Date().getFullYear() }}. Made with ♥ by{{ " " }}
+        Copyright © {{ new Date().getFullYear() }}. Made with ♥ by
         <a
-          href="https://web3templates.com/"
+          href="#"
           target="_blank"
           rel="noopener"
         >
-          Web3Templates.
-        </a>{{ " " }}
-        Illustrations from{{ " " }}
-        <a
-          href="https://www.glazestock.com/"
-          target="_blank"
-          rel="noopener "
-        >
-          Glazestock
+          ServerTagTracking.
         </a>
       </div>
     </Container>

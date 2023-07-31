@@ -9,7 +9,7 @@ defineProps<{
   <Container
     class="mt-4 w-full flex flex-col items-center justify-center text-center"
   >
-    <div v-if="pretitle" class="text-sm font-bold tracking-wider uppercase text-indigo-600">
+    <div v-if="pretitle" class="text-sm font-bold tracking-wider uppercase text-blue-600">
       {{ pretitle }}
     </div>
 

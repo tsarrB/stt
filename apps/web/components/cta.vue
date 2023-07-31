@@ -1,22 +1,19 @@
 <template>
   <Container>
-    <div class="mx-auto max-w-4xl w-full flex flex-wrap items-center justify-between gap-5 rounded-xl bg-indigo-600 px-7 py-7 text-white lg:flex-nowrap lg:px-12 lg:py-12">
+    <div class="mx-auto max-w-4xl w-full flex flex-wrap items-center justify-between gap-5 rounded-xl bg-blue-600 px-7 py-7 text-white lg:flex-nowrap lg:px-12 lg:py-12">
       <div class="flex-grow text-center lg:text-left">
         <h2 class="text-2xl font-medium lg:text-3xl">
-          Ready to try-out this template?
+          Ready to host your GTM server at STT?
         </h2>
-        <p class="mt-2 font-medium text-white text-opacity-90 lg:text-xl">
-          Don&apos;t let your visitors see a poor landing.
-        </p>
       </div>
       <div class="w-full flex-shrink-0 text-center lg:w-auto">
         <a
-          href="https://github.com/web3templates"
+          href="#"
           target="_blank"
           rel="noopener"
-          class="mx-auto inline-block rounded-md bg-white px-7 py-3 text-center text-lg font-medium text-indigo-600 lg:px-10 lg:py-5"
+          class="mx-auto inline-block rounded-md bg-white px-7 py-3 text-center text-lg font-medium text-blue-600 lg:px-10 lg:py-5"
         >
-          Download for Free
+          Try for Free
         </a>
       </div>
     </div>

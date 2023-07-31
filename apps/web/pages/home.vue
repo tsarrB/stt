@@ -7,31 +7,29 @@ import { benefitOne, benefitTwo } from '~/components/data'
     <Navbar />
     <Hero />
 
-    <SectionTitle
-      pretitle="Nextly Benefits"
-      title=" Why should you use this landing page"
-    >
-      Nextly is a free landing page & marketing website template for startups
-      and indie projects. Its built with Next.js & TailwindCSS. And its
-      completely open-source.
-    </SectionTitle>
-
     <Benefits :data="benefitOne" />
 
     <Benefits img-pos="right" :data="benefitTwo" />
 
+    <div class="mb-24 bg-gray-100 py-8 dark:bg-trueGray-800">
+      <SectionTitle
+        pretitle="important"
+        title="Great hosting"
+      >
+        Deploy cloud tagging servers for Meta Conversions API Gateway and server Google Tag Manager in 1 click. No more struggling and wasting your on tedious GCP or AWS configuration.
+      </SectionTitle>
+    </div>
+
     <SectionTitle
       pretitle="Watch a video"
-      title="Learn how to fullfil your needs"
+      title="Learn more about server side tracking"
     >
-      This section is to highlight a promo or demo video of your product.
-      Analysts says a landing page with video has 3% more conversion rate. So,
-      don&apos;t forget to add one. Just like this.
+      Setting up server-side tracking can be a difficult and time-consuming process. With STT, you get access to extensive solutions designed to simplify your server-side tracking setup.
     </SectionTitle>
 
     <Video />
 
-    <SectionTitle
+    <!-- <SectionTitle
       pretitle="Testimonials"
       title="Here's what our customers said"
     >
@@ -39,15 +37,19 @@ import { benefitOne, benefitTwo } from '~/components/data'
       Use this section to highlight your popular customers.
     </SectionTitle>
 
-    <Testimonials />
+    <Testimonials /> -->
 
-    <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
-      Answer your customers possible questions here, it will increase the
-      conversion rate as well as support or chat requests.
+    <SectionTitle
+      pretitle="FAQ"
+      title="Frequently Asked Questions"
+    >
+      Any questions left? Please write to us!
     </SectionTitle>
 
     <Faq />
+
     <Cta />
+
     <Footer />
   </div>
 </template>

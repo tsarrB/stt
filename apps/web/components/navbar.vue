@@ -18,10 +18,10 @@ const navigation = [
       <Disclosure v-slot="{ open }">
         <div class="w-full flex flex-wrap items-center justify-between lg:w-auto">
           <NuxtLink to="/">
-            <span class="flex items-center text-2xl font-medium text-indigo-500 space-x-2 dark:text-gray-100">
+            <span class="flex items-center text-2xl font-medium text-blue-800 space-x-2 dark:text-gray-100">
               <span>
                 <img
-                  src="/img/logo2.svg"
+                  src="/img/logo.svg"
                   alt="N"
                   width="32"
                   height="32"
@@ -34,7 +34,7 @@ const navigation = [
 
           <DisclosureButton
             aria-label="Toggle Menu"
-            class="ml-auto rounded-md px-2 py-1 text-gray-500 lg:hidden focus:bg-indigo-100 dark:text-gray-300 focus:text-indigo-500 hover:text-indigo-500 focus:outline-none dark:focus:bg-trueGray-700"
+            class="ml-auto rounded-md px-2 py-1 text-gray-500 lg:hidden focus:bg-blue-100 dark:text-gray-300 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-trueGray-700"
           >
             <svg
               class="h-6 w-6 fill-current"
@@ -56,11 +56,11 @@ const navigation = [
           </DisclosureButton>
 
           <DisclosurePanel class="my-5 w-full flex flex-wrap lg:hidden">
-            <NuxtLink v-for="(item, index) in navigation" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 -ml-4 focus:bg-indigo-100 dark:text-gray-300 focus:text-indigo-500 hover:text-indigo-500 focus:outline-none dark:focus:bg-gray-800">
+            <NuxtLink v-for="(item, index) in navigation" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 -ml-4 focus:bg-blue-100 dark:text-gray-300 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-gray-800">
               {{ item }}
             </NuxtLink>
 
-            <NuxtLink to="/" class="mt-3 w-full rounded-md bg-indigo-600 px-6 py-2 text-center text-white lg:ml-5">
+            <NuxtLink to="/" class="mt-3 w-full rounded-md bg-blue-600 px-6 py-2 text-center text-white lg:ml-5">
               Get Started
             </NuxtLink>
           </DisclosurePanel>
@@ -71,7 +71,7 @@ const navigation = [
       <div class="hidden text-center lg:flex lg:items-center">
         <ul class="flex-1 list-none items-center justify-end pt-6 lg:flex lg:pt-0">
           <li v-for="(menu, index) in navigation" :key="index" class="nav__item mr-3">
-            <NuxtLink to="/" class="inline-block rounded-md px-4 py-2 text-lg font-normal text-gray-800 no-underline focus:bg-indigo-100 dark:text-gray-200 focus:text-indigo-500 hover:text-indigo-500 focus:outline-none dark:focus:bg-gray-800">
+            <NuxtLink to="/" class="inline-block rounded-md px-4 py-2 text-lg font-normal text-gray-800 no-underline focus:bg-blue-100 dark:text-gray-200 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-gray-800">
               {{ menu }}
             </NuxtLink>
           </li>
@@ -79,7 +79,7 @@ const navigation = [
       </div>
 
       <div class="nav__item mr-3 hidden lg:flex space-x-4">
-        <NuxtLink to="/" class="rounded-md bg-indigo-600 px-6 py-2 text-white md:ml-5">
+        <NuxtLink to="/" class="rounded-md bg-blue-600 px-6 py-2 text-white md:ml-5">
           Get Started
         </NuxtLink>
 
