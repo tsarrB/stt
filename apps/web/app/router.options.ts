@@ -5,8 +5,16 @@ export default <RouterConfig>{
   fallback: false,
 
   scrollBehavior(to, from, savedPosition) {
-    if (to.hash || to.path === from.path)
+    if (!to.hash && to.path === from.path)
       return
+
+    if (to.hash) {
+      document
+        .querySelector(to.hash)
+        ?.scrollIntoView({ block: 'start', behavior: 'smooth' })
+
+      return
+    }
 
     if (savedPosition)
       return savedPosition

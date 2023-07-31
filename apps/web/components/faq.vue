@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { ChevronUpIcon } from '@heroicons/vue/24/solid'
-import Content from '~/components/content2.vue'
+import Content from '~/components/content.vue'
 
 const faqs = [
   {

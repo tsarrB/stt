@@ -4,8 +4,10 @@
 
 <template>
   <main>
-    <!-- <Header /> -->
+    <Navbar />
 
     <slot />
+
+    <Footer />
   </main>
 </template>

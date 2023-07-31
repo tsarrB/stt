@@ -1,15 +1,14 @@
 <script lang="ts" setup>
-import { benefitOne, benefitTwo } from '~/components/data'
+import { benefitOne, benefitTwo } from '~/constants/benefits'
 </script>
 
 <template>
   <div>
-    <Navbar />
     <Hero />
 
     <Benefits :data="benefitOne" />
 
-    <Benefits img-pos="right" :data="benefitTwo" />
+    <Benefits id="features" img-pos="right" :data="benefitTwo" />
 
     <div class="mb-24 bg-gray-100 py-8 dark:bg-trueGray-800">
       <SectionTitle
@@ -24,7 +23,7 @@ import { benefitOne, benefitTwo } from '~/components/data'
       pretitle="Watch a video"
       title="Learn more about server side tracking"
     >
-      Setting up server-side tracking can be a difficult and time-consuming process. With STT, you get access to extensive solutions designed to simplify your server-side tracking setup.
+      Setting up server-side tracking can be a difficult and time-consuming process. With ServerTagTracking, you get access to extensive solutions designed to simplify your server-side tracking setup.
     </SectionTitle>
 
     <Video />
@@ -49,7 +48,5 @@ import { benefitOne, benefitTwo } from '~/components/data'
     <Faq />
 
     <Cta />
-
-    <Footer />
   </div>
 </template>

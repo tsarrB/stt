@@ -7,7 +7,7 @@ import {
   ShieldCheckIcon,
 } from '@heroicons/vue/24/solid'
 
-const benefitOne = {
+export const benefitOne = {
   title: 'Everything is evolving – marketing and analytics are no exception.',
   desc: 'Since some browsers have already started eliminating third party cookies, we need to start looking for a solution to keep collecting data and ensure that our data is reliable.',
   image: '/img/benefit-1.svg',
@@ -30,7 +30,7 @@ const benefitOne = {
   ],
 }
 
-const benefitTwo = {
+export const benefitTwo = {
   title: 'A few large advantages',
   desc: 'Moving the tracking mechanism for browser scripts to your own server brings you many benefits:',
   image: '/img/benefit-2.svg',
@@ -52,5 +52,3 @@ const benefitTwo = {
     },
   ],
 }
-
-export { benefitOne, benefitTwo }

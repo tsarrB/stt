@@ -28,7 +28,7 @@ const Benefit = createReusableTemplate()
     </div>
   </Benefit.define>
 
-  <Container class="mb-20 flex flex-wrap lg:flex-nowrap lg:gap-10">
+  <Container v-bind="$attrs" class="mb-20 flex flex-wrap lg:flex-nowrap lg:gap-10">
     <div
       class="w-full flex items-center justify-center lg:w-1/2"
       :class="[imgPos === 'right' ? 'lg:order-1' : '']"

@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import ThemeChanger from './ThemeChanger.vue'
-
-const navigation = [
-  'Product',
-  'Features',
-  'Pricing',
-  'Company',
-  'Blog',
-]
+import { main as mainMenu } from '~/constants/menu'
 </script>
 
 <template>
@@ -56,8 +49,8 @@ const navigation = [
           </DisclosureButton>
 
           <DisclosurePanel class="my-5 w-full flex flex-wrap lg:hidden">
-            <NuxtLink v-for="(item, index) in navigation" :key="index" to="/" class="w-full rounded-md px-4 py-2 text-gray-500 -ml-4 focus:bg-blue-100 dark:text-gray-300 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-gray-800">
-              {{ item }}
+            <NuxtLink v-for="(item, index) in mainMenu" :key="index" :to="item.to" class="w-full rounded-md px-4 py-2 text-gray-500 -ml-4 focus:bg-blue-100 dark:text-gray-300 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-gray-800">
+              {{ item.title }}
             </NuxtLink>
 
             <NuxtLink to="/" class="mt-3 w-full rounded-md bg-blue-600 px-6 py-2 text-center text-white lg:ml-5">
@@ -70,9 +63,9 @@ const navigation = [
       <!-- {/* menu  */} -->
       <div class="hidden text-center lg:flex lg:items-center">
         <ul class="flex-1 list-none items-center justify-end pt-6 lg:flex lg:pt-0">
-          <li v-for="(menu, index) in navigation" :key="index" class="nav__item mr-3">
-            <NuxtLink to="/" class="inline-block rounded-md px-4 py-2 text-lg font-normal text-gray-800 no-underline focus:bg-blue-100 dark:text-gray-200 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-gray-800">
-              {{ menu }}
+          <li v-for="(item, index) in mainMenu" :key="index" class="nav__item mr-3">
+            <NuxtLink :to="item.to" class="inline-block rounded-md px-4 py-2 text-lg font-normal text-gray-800 no-underline focus:bg-blue-100 dark:text-gray-200 focus:text-blue-500 hover:text-blue-500 focus:outline-none dark:focus:bg-gray-800">
+              {{ item.title }}
             </NuxtLink>
           </li>
         </ul>

@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-4xl w-full flex flex-wrap items-center justify-between gap-5 rounded-xl bg-blue-600 px-7 py-7 text-white lg:flex-nowrap lg:px-12 lg:py-12">
       <div class="flex-grow text-center lg:text-left">
         <h2 class="text-2xl font-medium lg:text-3xl">
-          Ready to host your GTM server at STT?
+          Ready to host your GTM server at ServerTagTracking?
         </h2>
       </div>
       <div class="w-full flex-shrink-0 text-center lg:w-auto">

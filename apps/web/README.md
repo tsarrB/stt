@@ -3,6 +3,8 @@ https://kitwind.io/products/kometa/components
 https://windstatic.com/
 https://flowbite.com/blocks/
 
+https://themeisle.com/illustrations/
+
 
 # Nuxt 3 Minimal Starter
 
