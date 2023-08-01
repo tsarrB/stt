@@ -44,7 +44,6 @@ function onOpenCallback() {
 
         <div class="flex justify-center">
           <button
-            type="submit"
             class="focus:shadow-outline h-12 min-w-280px w-full inline-flex items-center justify-center whitespace-nowrap rounded bg-blue-600 px-6 font-medium tracking-wide text-white shadow-md transition duration-200 md:w-auto hover:bg-blue-700 focus:outline-none"
             @click="onOpenCallback"
           >

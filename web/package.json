@@ -8,13 +8,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "nuxt preview"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
+    "preview": "nuxt preview",
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@antfu/eslint-config": "^0.39.5",
@@ -28,6 +23,7 @@
     "@vueuse/components": "^10.2.1",
     "@vueuse/nuxt": "^10.2.0",
     "eslint": "^8.43.0",
+    "lint-staged": "^13.2.3",
     "nuxt": "^3.6.3",
     "ofetch": "^1.1.0",
     "sass": "^1.63.4",
