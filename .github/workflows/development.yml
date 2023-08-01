@@ -22,8 +22,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{env.NODE_VERSION}}
-          # cache: 'yarn'
+          cache: 'yarn'
 
+          # tar -czf web-"${GITHUB_SHA}".tar.gz ../
       - run: |
           ls -la
           cd web
@@ -32,13 +33,12 @@ jobs:
           echo GITHUB_SHA=${GITHUB_SHA} >> .env
           yarn install
           yarn build
-          tar -czf web-"${GITHUB_SHA}".tar.gz ../
 
       - name: Store app-artifacts for distribution
         uses: actions/upload-artifact@v3
         with:
-          name: app-artifacts
-          path: web-${{ github.sha }}.tar.gz
+          name: web-app-artifacts
+          path: ./web
 
   deploy:
     name: Deploy web app
@@ -53,8 +53,8 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: app-artifacts
+          name: web-app-artifacts
 
       - name: Upload app-artifacts
-        run: rsync -avz web-${{ github.sha }}.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/
+        run: rsync -avz ./web ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/web-"${GITHUB_SHA}"
 
