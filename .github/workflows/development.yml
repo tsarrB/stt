@@ -1,4 +1,7 @@
-name: Development - Testing
+name: Development - deploy
+
+env:
+  NODE_VERSION: 18.16.1
 
 on:
   push:
@@ -11,14 +14,44 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Build web app
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_VERSION}}
+          cache: 'yarn'
 
+      - run: |
+          cd web
+          touch .env
+          echo RELEASE_VERSION=${GITHUB_REF} >> .env
+          echo GITHUB_SHA=${GITHUB_SHA} >> .env
+          yarn install
+          yarn build
+          tar -czf web-"${GITHUB_SHA}".tar.gz ../
+
+      - name: Store app-artifacts for distribution
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-artifacts
+          path: web-${{ github.sha }}.tar.gz
+
+  deploy:
+    name: Deploy web app
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Create SSH key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
-      - name: Test SSH
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'ls -la'
+      - uses: actions/download-artifact@v3
+        with:
+          name: app-artifacts
+
+      - name: Upload app-artifacts
+        run: rsync -avz web-${{ github.sha }}.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/
 
