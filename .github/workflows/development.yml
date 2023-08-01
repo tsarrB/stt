@@ -20,6 +20,6 @@ jobs:
           # known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
-      # - name: Create the release folder on the server
-      #   run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} 'mkdir /var/www/pullcrm.dev/frontend/versions/release-${{ github.sha }}'
+      - name: Test SSH
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'ls -la'
 
