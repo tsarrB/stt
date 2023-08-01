@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build web app
+      - name: Setup node
         env:
           GITHUB_SHA: ${{ github.sha }}
         uses: actions/setup-node@v3
@@ -24,8 +24,8 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
           # cache: 'yarn'
 
-          # tar -czf web-"${GITHUB_SHA}".tar.gz ../
-      - run: |
+      - name: Build web app #2
+        run: |
           ls -la
           cd web
           touch .env
@@ -33,28 +33,32 @@ jobs:
           echo GITHUB_SHA=${GITHUB_SHA} >> .env
           yarn install
           yarn build
+          tar -czf web-"${GITHUB_SHA}".tar.gz ./
+          ls -la
+          cd ../
+          ls -la
 
-      - name: Store app-artifacts for distribution
-        uses: actions/upload-artifact@v3
-        with:
-          name: web-app-artifacts
-          path: ./web
+      # - name: Store app-artifacts for distribution
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: web-app-artifacts
+      #     path: ./web
 
-  deploy:
-    name: Deploy web app
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+  # deploy:
+  #   name: Deploy web app
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Create SSH key
+  #       uses: shimataro/ssh-key-action@v2
+  #       with:
+  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: web-app-artifacts
+  #     - uses: actions/download-artifact@v3
+  #       with:
+  #         name: web-app-artifacts
 
-      - name: Upload app-artifacts
-        run: rsync -avz ./web ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/web-"${GITHUB_SHA}"
+  #     - name: Upload app-artifacts
+  #       run: rsync -avz ./web ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/web-"${GITHUB_SHA}"
 
