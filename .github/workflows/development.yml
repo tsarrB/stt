@@ -48,15 +48,17 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download app-artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: web-app-artifacts
+          path: web-"${GITHUB_SHA}".tar.gz
+
       - name: Create SSH key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-
-      - uses: actions/download-artifact@v3
-        with:
-          name: web-app-artifacts
 
       - name: Upload app-artifacts
         run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/web-"${GITHUB_SHA}"
