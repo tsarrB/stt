@@ -2,6 +2,7 @@ name: Development - deploy
 
 env:
   NODE_VERSION: 18.16.1
+  WEB_APP_FOLDER: '/var/www/servertagtracking.com/web'
 
 on:
   push:
@@ -41,6 +42,9 @@ jobs:
           cd ../
           tar -czf web-"${GITHUB_SHA}".tar.gz ./web
 
-      - name: Upload app-artifacts
-        run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/artifacts/web-"${GITHUB_SHA}"
+      - name: Deploy web app artifacts
+        run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{env.WEB_APP_FOLDER}}/"
+
+      - name: Unarchive and change symlink
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}} && web-"${GITHUB_SHA}".tar.gz && rm -rf current && ln -s web current && rm -rf web-"${GITHUB_SHA}".tar.gz'
 
