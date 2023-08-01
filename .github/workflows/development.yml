@@ -33,9 +33,8 @@ jobs:
           echo GITHUB_SHA=${GITHUB_SHA} >> .env
           yarn install
           yarn build
-          tar -czf web-"${GITHUB_SHA}".tar.gz ./
-          ls -la
           cd ../
+          tar -czf web-"${GITHUB_SHA}".tar.gz ./web
           ls -la
 
       # - name: Store app-artifacts for distribution
