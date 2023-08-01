@@ -49,5 +49,5 @@ jobs:
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}} && tar -xvf web-${{ github.sha }}.tar.gz && rm -rf current && mv web current && rm -rf web-${{ github.sha }}.tar.gz'
 
       - name: Restart pm2
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}}/current && pm2 startOrReload ecosystem.config.js --env development --update-env'
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}}/current && source ~/.nvm/nvm.sh && pm2 startOrReload ecosystem.config.js --env development --update-env'
 

@@ -24,7 +24,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Server Tag Tracking',
+      title: 'Easily Implement Server-Side Tagging with ServerTagTracking for Everyone',
       link: [
         // TODO: Add import for Inter font
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: '' },
+        { name: 'description', content: 'Starting server-side tracking can be a difficult task. However, we offer a complete range of services to help you get started right away.' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
