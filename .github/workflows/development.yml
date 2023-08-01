@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{env.NODE_VERSION}}
-          cache: 'yarn'
+          # cache: 'yarn'
 
           # tar -czf web-"${GITHUB_SHA}".tar.gz ../
       - run: |
