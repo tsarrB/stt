@@ -31,14 +31,14 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
           # cache: 'yarn'
 
-          # yarn install
-          # yarn build
       - name: Build web app #2
         run: |
           cd web
           touch .env
           echo RELEASE_VERSION=${GITHUB_REF} >> .env
           echo GITHUB_SHA=${GITHUB_SHA} >> .env
+          yarn install
+          yarn build
           cd ../
           tar -czf web-"${GITHUB_SHA}".tar.gz ./web
 
