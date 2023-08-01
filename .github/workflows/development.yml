@@ -43,8 +43,8 @@ jobs:
           tar -czf web-"${GITHUB_SHA}".tar.gz ./web
 
       - name: Deploy web app artifacts
-        run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{env.WEB_APP_FOLDER}}/"
+        run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{env.WEB_APP_FOLDER}}/
 
       - name: Unarchive and change symlink
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}} && web-"${GITHUB_SHA}".tar.gz && rm -rf current && ln -s web current && rm -rf web-"${GITHUB_SHA}".tar.gz'
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}} && tar -xvf web-"${GITHUB_SHA}".tar.gz && rm -rf current && ln -s web current && rm -rf web-"${GITHUB_SHA}".tar.gz'
 
