@@ -23,6 +23,7 @@ jobs:
           # cache: 'yarn'
 
       - run: |
+          ls -la
           cd web
           touch .env
           echo RELEASE_VERSION=${GITHUB_REF} >> .env
