@@ -16,6 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Create SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
       - name: Setup node
         env:
           GITHUB_SHA: ${{ github.sha }}
@@ -28,37 +34,12 @@ jobs:
           # yarn build
       - name: Build web app #2
         run: |
-          ls -la
           cd web
           touch .env
           echo RELEASE_VERSION=${GITHUB_REF} >> .env
           echo GITHUB_SHA=${GITHUB_SHA} >> .env
           cd ../
           tar -czf web-"${GITHUB_SHA}".tar.gz ./web
-          ls -la
-
-      - name: Store app-artifacts for distribution
-        uses: actions/upload-artifact@v3
-        with:
-          name: web-app-artifacts
-          path: web-"${GITHUB_SHA}".tar.gz
-
-  deploy:
-    name: Deploy web app
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download app-artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: web-app-artifacts
-          path: web-"${GITHUB_SHA}".tar.gz
-
-      - name: Create SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
       - name: Upload app-artifacts
         run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/artifacts/web-"${GITHUB_SHA}"
