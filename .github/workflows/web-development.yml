@@ -33,7 +33,7 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
           # cache: 'yarn'
 
-      - name: Build web app #2
+      - name: Build web app
         run: |
           cd web
           touch .env
