@@ -2,6 +2,18 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import ThemeChanger from './ThemeChanger.vue'
 import { main as mainMenu } from '~/constants/menu'
+
+const route = useRoute()
+const router = useRouter()
+
+function onOpenCallback() {
+  router.replace({
+    query: {
+      ...route.query,
+      callback: 'true',
+    },
+  })
+}
 </script>
 
 <template>
@@ -53,8 +65,13 @@ import { main as mainMenu } from '~/constants/menu'
               {{ item.title }}
             </NuxtLink>
 
-            <a href="/" class="mt-3 w-full rounded-md bg-blue-600 px-6 py-2 text-center text-white lg:ml-5">
-              Login & Sign Up
+            <a
+              @click.prevent="onOpenCallback"
+              href="/"
+              class="mt-3 w-full rounded-md bg-blue-600 px-6 py-2 text-center text-white lg:ml-5"
+            >
+              <!-- Login & Sign Up -->
+              Contact
             </a>
           </DisclosurePanel>
         </div>
@@ -72,8 +89,9 @@ import { main as mainMenu } from '~/constants/menu'
       </div>
 
       <div class="nav__item mr-3 hidden lg:flex space-x-4">
-        <a href="/" class="rounded-md bg-blue-600 px-6 py-2 text-white md:ml-5">
-          Login & Sign Up
+        <a @click.prevent="onOpenCallback" href="/" class="rounded-md bg-blue-600 px-6 py-2 text-white md:ml-5">
+          Contact
+          <!-- Login & Sign Up -->
         </a>
 
         <ThemeChanger />
