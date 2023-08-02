@@ -12,6 +12,13 @@ export default defineNuxtConfig({
     // ...other options
   },
 
+  runtimeConfig: {
+    // eslint-disable-next-line n/prefer-global/process
+    STRAPI_URL: process.env.STRAPI_URL,
+    // eslint-disable-next-line n/prefer-global/process
+    STRAPI_TOKEN: process.env.STRAPI_TOKEN,
+  },
+
   modules: [
     '@nuxt/devtools',
     '@vueuse/nuxt',

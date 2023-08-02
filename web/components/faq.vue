@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { ChevronUpIcon } from '@heroicons/vue/24/solid'
-import Content from '~/components/content.vue'
 
 const faqs = [
   {
@@ -42,7 +41,7 @@ const faqs = [
 
           <DisclosurePanel class="px-4 pb-2 pt-4 text-gray-500 dark:text-gray-300">
             <Content>
-              <div v-html="item.answer" />
+              <div class="font-light" v-html="item.answer" />
             </Content>
           </DisclosurePanel>
         </Disclosure>

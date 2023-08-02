@@ -2,6 +2,7 @@ https://headlessui.com/
 https://kitwind.io/products/kometa/components
 https://windstatic.com/
 https://flowbite.com/blocks/
+https://www.hyperui.dev/
 
 https://themeisle.com/illustrations/
 

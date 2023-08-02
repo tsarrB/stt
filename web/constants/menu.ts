@@ -14,8 +14,7 @@ export const main = [
   },
   {
     title: 'Blog',
-    to: '/',
-    // to: '/blog',
+    to: '/blog',
   },
 ]
 
