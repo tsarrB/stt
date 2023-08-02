@@ -1,0 +1,41 @@
+{
+  "name": "strapi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "scripts": {
+    "build": "strapi build",
+    "develop": "strapi develop",
+    "postinstall": "cd src/plugins/strapi-plugin-react-editorjs && npm install && cd ../../..",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@_sh/strapi-plugin-ckeditor": "^2.0.4",
+    "@ef2/strapi-plugin-bold-title-editor": "^1.0.8",
+    "@retikolo/drag-drop-content-types": "^1.3.9",
+    "@strapi/plugin-i18n": "4.12.0",
+    "@strapi/plugin-seo": "^1.9.2",
+    "@strapi/plugin-users-permissions": "4.12.0",
+    "@strapi/strapi": "4.12.0",
+    "pg": "8.8.0",
+    "strapi-plugin-duplicate-button": "^1.1.12",
+    "strapi-plugin-placeholder": "^4.4.0",
+    "strapi-plugin-populate-deep": "^3.0.0",
+    "strapi-plugin-redirects": "^0.0.6",
+    "strapi-plugin-sitemap": "^3.0.3",
+    "strapi-plugin-slugify": "^2.3.3",
+    "strapi-plugin-transformer": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "e23ab604-99d0-4046-ac7a-157bf46a7843"
+  }
+}
