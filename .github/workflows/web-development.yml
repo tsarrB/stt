@@ -1,0 +1,55 @@
+name: Development - deploy
+
+env:
+  NODE_VERSION: 18.16.1
+  WEB_APP_FOLDER: '/var/www/servertagtracking.com/web'
+
+on:
+  push:
+    branches:
+      - 'development'
+    paths:
+      - 'web/**'
+
+jobs:
+  build:
+    name: Build web app
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+      - name: Setup node
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{env.NODE_VERSION}}
+          # cache: 'yarn'
+
+      - name: Build web app
+        run: |
+          cd web
+          touch .env
+          echo RELEASE_VERSION=${GITHUB_REF} >> .env
+          echo GITHUB_SHA=${GITHUB_SHA} >> .env
+          yarn install
+          yarn build
+          cd ../
+          tar -czf web-"${GITHUB_SHA}".tar.gz ./web
+
+      - name: Deploy web app artifacts
+        run: rsync -avz web-"${GITHUB_SHA}".tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{env.WEB_APP_FOLDER}}/
+
+      - name: Unarchive and change symlink
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}} && tar -xvf web-${{ github.sha }}.tar.gz && rm -rf current && mv web current && rm -rf web-${{ github.sha }}.tar.gz'
+
+      - name: Restart pm2
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'cd ${{env.WEB_APP_FOLDER}}/current && source ~/.nvm/nvm.sh && pm2 startOrReload ecosystem.config.js --env development --update-env'
+

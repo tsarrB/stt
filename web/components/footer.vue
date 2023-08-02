@@ -46,7 +46,7 @@ import { additional as additionalMenu, main as mainMenu } from '~/constants/menu
 
           <div class="mt-5 flex text-gray-400 space-x-5 dark:text-gray-500">
             <a
-              href="#"
+              href="https://twitter.com/STagTracking"
               target="_blank"
               rel="noopener"
             >

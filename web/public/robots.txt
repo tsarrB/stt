@@ -1,0 +1,12 @@
+User-Agent: Googlebot
+Disallow: *utm_*
+Disallow: */?query*
+Disallow: *=false*
+Disallow: *=true*
+Allow: *favicon*
+
+User-Agent: Googlebot-Image
+Allow: /
+
+User-Agent: *
+Allow: /
